@@ -1,4 +1,5 @@
 from flask import Flask, jsonify, request
+from flask_cors import CORS
 import requests
 
 TIMEOUT = 540  # in seconds
@@ -8,6 +9,7 @@ if not REDIRECT_URL.endswith('/'):
     REDIRECT_URL += '/'
 
 app = Flask(__name__)
+cors = CORS(app)
 
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
